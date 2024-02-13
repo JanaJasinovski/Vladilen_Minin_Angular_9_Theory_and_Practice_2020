@@ -1,39 +1,60 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { Todo, TodosService } from './todos.service'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  title = 'Dynamic title'
-  number = 42
-  arr = [1, 2, 3]
+  todos: Todo[] = []
+  loading = false
+  public todoTitle = ''
+  error = ''
 
-  obj = { a: 1, b: { c: 2 } }
+  constructor(private todosService: TodosService) { }
 
-  inputValue = ''
-
-  // img = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsm-dQHFmWp9Xw1e-4BfLDr67vBq5cil6OytRJExumqHUzTHVZ'
-
-  constructor() {
-    // setTimeout(() => {
-    //   console.log('Timeout is over')
-    //   this.img = 'https://angular.io/assets/images/logos/angular/angular.png'
-    // }, 5000)
+  ngOnInit() {
+    this.fetchTodos()
   }
 
-  onInput(event: Event) {
-    this.inputValue = (<HTMLInputElement>event.target).value
+  addTodo() {
+    if (!this.todoTitle.trim()) {
+      return
+    }
+
+    this.todosService.addTodo({
+      title: this.todoTitle,
+      completed: false
+    }).subscribe(todo => {
+      this.todos.push(todo)
+      this.todoTitle = ''
+    })
   }
 
-  onBlur(str: string) {
-    this.inputValue = str
+  fetchTodos() {
+    this.loading = true
+    this.todosService.fetchTodos()
+      .subscribe(todos => {
+        this.todos = todos
+        this.loading = false
+      }, error => {
+        this.error = error.message
+      })
   }
 
-  onClick() {
-    console.log('Click!')
+  removeTodo(id: number) {
+    this.todosService.removeTodo(id)
+      .subscribe(() => {
+        this.todos = this.todos.filter(t => t.id !== id)
+      })
   }
 
+  completeTodo(id: number) {
+    this.todosService.completeTodo(id).subscribe(todo => {
+      (this.todos.find(t => t.id === todo.id) as Todo).completed = true;
+    })
+  }
 }
+
