@@ -1,25 +1,9 @@
 <h1>Hello Angular World!</h1>
 
-<!--<p>{{ title }}</p>-->
+<button (click)="toggle = !toggle">Toggle</button>
 
-<!--<p><strong>{{number - 2}}</strong></p>-->
-<!--<p><strong>{{arr}}</strong></p>-->
-<!--<p><strong>{{obj.b.c}}</strong></p>-->
+<p *ngIf="toggle; else blueP" class="red">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, ratione.</p>
 
-<!--<p><strong>{{ 40 + 2 }}</strong></p>-->
-<!--<p><strong>{{ 'Hello' + ' World' }}</strong></p>-->
-
-<!-- <img [src]="img" alt=""> -->
-
-<button (click)="onClick()">Click me!</button>
-
-<input type="text" (keyup.enter)="onInput($event)" (blur)="onBlur(myInput.value)" #myInput>
-<p><strong>{{inputValue}}</strong></p>
-
-<hr>
-<app-post></app-post>
-<!--<app-post></app-post>-->
-
-<hr>
-
-<app-post4></app-post4>
+<ng-template #blueP>
+    <p class="blue">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, in?</p>
+</ng-template>
