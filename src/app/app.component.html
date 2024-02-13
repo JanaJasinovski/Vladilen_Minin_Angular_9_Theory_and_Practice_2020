@@ -1,25 +1,10 @@
 <h1>Hello Angular World!</h1>
 
-<!--<p>{{ title }}</p>-->
+<button (click)="toggle = !toggle">Toggle</button>
+<button (click)="toggle = 111">Set 111</button>
 
-<!--<p><strong>{{number - 2}}</strong></p>-->
-<!--<p><strong>{{arr}}</strong></p>-->
-<!--<p><strong>{{obj.b.c}}</strong></p>-->
-
-<!--<p><strong>{{ 40 + 2 }}</strong></p>-->
-<!--<p><strong>{{ 'Hello' + ' World' }}</strong></p>-->
-
-<!-- <img [src]="img" alt=""> -->
-
-<button (click)="onClick()">Click me!</button>
-
-<input type="text" (keyup.enter)="onInput($event)" (blur)="onBlur(myInput.value)" #myInput>
-<p><strong>{{inputValue}}</strong></p>
-
-<hr>
-<app-post></app-post>
-<!--<app-post></app-post>-->
-
-<hr>
-
-<app-post4></app-post4>
+<div [ngSwitch]="toggle">
+    <p *ngSwitchCase="true" class="red">Lorem ipsum.</p>
+    <p *ngSwitchCase="false" class="blue">Lorem ipsum. Lorem ipsum.</p>
+    <p *ngSwitchDefault>Lorem ipsum.</p>
+</div>
