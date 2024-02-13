@@ -1,25 +1,21 @@
 <h1>Hello Angular World!</h1>
 
-<!--<p>{{ title }}</p>-->
+<!--<ul>-->
+<!--  <li *ngFor="let n of arr; let idx = index">-->
+<!--    {{idx + 1}}  <strong>{{n}}</strong>-->
+<!--  </li>-->
+<!--</ul>-->
 
-<!--<p><strong>{{number - 2}}</strong></p>-->
-<!--<p><strong>{{arr}}</strong></p>-->
-<!--<p><strong>{{obj.b.c}}</strong></p>-->
-
-<!--<p><strong>{{ 40 + 2 }}</strong></p>-->
-<!--<p><strong>{{ 'Hello' + ' World' }}</strong></p>-->
-
-<!-- <img [src]="img" alt=""> -->
-
-<button (click)="onClick()">Click me!</button>
-
-<input type="text" (keyup.enter)="onInput($event)" (blur)="onBlur(myInput.value)" #myInput>
-<p><strong>{{inputValue}}</strong></p>
-
-<hr>
-<app-post></app-post>
-<!--<app-post></app-post>-->
-
-<hr>
-
-<app-post4></app-post4>
+<ul style="list-style: none">
+    <li *ngFor="let post of objs">
+        <p>{{post.title}} <b>{{post.author}}</b></p>
+        <ul>
+            <li *ngFor="let comment of post.comments">
+                <div>
+                    <small>{{comment.name}}</small>
+                    <p>{{comment.text}}</p>
+                </div>
+            </li>
+        </ul>
+    </li>
+</ul>

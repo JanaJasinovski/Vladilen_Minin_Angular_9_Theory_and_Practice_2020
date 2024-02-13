@@ -7,33 +7,22 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  title = 'Dynamic title'
-  number = 42
-  arr = [1, 2, 3]
+  arr = [1, 1, 2, 3, 5, 8, 13]
 
-  obj = { a: 1, b: { c: 2 } }
-
-  inputValue = ''
-
-  // img = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsm-dQHFmWp9Xw1e-4BfLDr67vBq5cil6OytRJExumqHUzTHVZ'
-
-  constructor() {
-    // setTimeout(() => {
-    //   console.log('Timeout is over')
-    //   this.img = 'https://angular.io/assets/images/logos/angular/angular.png'
-    // }, 5000)
-  }
-
-  onInput(event: Event) {
-    this.inputValue = (<HTMLInputElement>event.target).value
-  }
-
-  onBlur(str: string) {
-    this.inputValue = str
-  }
-
-  onClick() {
-    console.log('Click!')
-  }
-
+  objs = [
+    {
+      title: 'Post 1', author: 'Vladilen', comments: [
+        { name: 'Max', text: 'lorem 1' },
+        { name: 'Max', text: 'lorem 2' },
+        { name: 'Max', text: 'lorem 3' },
+      ]
+    },
+    {
+      title: 'Post 2', author: 'Vladilen 2', comments: [
+        { name: 'Max 2', text: 'lorem 1' },
+        { name: 'Max 2', text: 'lorem 2' },
+        { name: 'Max 2', text: 'lorem 3' },
+      ]
+    }
+  ]
 }
