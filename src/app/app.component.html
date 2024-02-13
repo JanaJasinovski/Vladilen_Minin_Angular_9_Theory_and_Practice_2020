@@ -1,25 +1,35 @@
-<h1>Hello Angular World!</h1>
+<div class="container">
+    <h1>Angular Directives</h1>
 
-<!--<p>{{ title }}</p>-->
 
-<!--<p><strong>{{number - 2}}</strong></p>-->
-<!--<p><strong>{{arr}}</strong></p>-->
-<!--<p><strong>{{obj.b.c}}</strong></p>-->
+    <p [appStyle]="'red'" [dStyles]="{border: '1px solid blue', borderRadius: '5px'}">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, laborum!
+    </p>
 
-<!--<p><strong>{{ 40 + 2 }}</strong></p>-->
-<!--<p><strong>{{ 'Hello' + ' World' }}</strong></p>-->
+    <p [appStyle]="'blue'" [dStyles]="{border: '1px solid red', borderRadius: '15px'}">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, laborum!
+    </p>
 
-<!-- <img [src]="img" alt=""> -->
+    <button class="btn" (click)="isVisible = !isVisible">Toggle</button>
 
-<button (click)="onClick()">Click me!</button>
+    <!--  <div *ngIf="isVisible" class="wrap">-->
+    <!--    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur cum ea et ex hic incidunt itaque maiores quos sint veritatis!</p>-->
+    <!--  </div>-->
 
-<input type="text" (keyup.enter)="onInput($event)" (blur)="onBlur(myInput.value)" #myInput>
-<p><strong>{{inputValue}}</strong></p>
+    <!--  <ng-template [ngIf]="isVisible">-->
+    <!--    <div class="wrap">-->
+    <!--      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur cum ea et ex hic incidunt itaque maiores quos sint veritatis!</p>-->
+    <!--    </div>-->
+    <!--  </ng-template>-->
 
-<hr>
-<app-post></app-post>
-<!--<app-post></app-post>-->
+    <!--  <div class="wrap" *appIfnot="!isVisible">-->
+    <!--    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur cum ea et ex hic incidunt itaque maiores quos sint veritatis!</p>-->
+    <!--  </div>-->
 
-<hr>
-
-<app-post4></app-post4>
+    <ng-template [appIfnot]="!isVisible">
+        <div class="wrap">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur cum ea et ex hic incidunt itaque
+                maiores quos sint veritatis!</p>
+        </div>
+    </ng-template>
+</div>
