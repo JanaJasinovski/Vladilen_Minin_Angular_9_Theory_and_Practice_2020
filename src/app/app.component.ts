@@ -1,39 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+export interface Post {
+  title: string
+  text: string
+  id?: number
+}
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  posts: Post[] = [
+    { title: 'Хочу выучить Angular компоненты', text: 'Я все еще учу компоненты', id: 1 },
+    { title: 'Следующий блок', text: 'Будет про директивы и еще про пайпы', id: 2 }
+  ]
 
-  title = 'Dynamic title'
-  number = 42
-  arr = [1, 2, 3]
-
-  obj = { a: 1, b: { c: 2 } }
-
-  inputValue = ''
-
-  // img = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsm-dQHFmWp9Xw1e-4BfLDr67vBq5cil6OytRJExumqHUzTHVZ'
-
-  constructor() {
+  ngOnInit(): void {
     // setTimeout(() => {
-    //   console.log('Timeout is over')
-    //   this.img = 'https://angular.io/assets/images/logos/angular/angular.png'
+    //   console.log('Timeout')
+    //   this.posts[0] = {
+    //     title: 'changed',
+    //     text: 'changed 2',
+    //     id: 33
+    //   }
     // }, 5000)
   }
 
-  onInput(event: Event) {
-    this.inputValue = (<HTMLInputElement>event.target).value
+  updatePosts(post: Post) {
+    this.posts.unshift(post)
+    // console.log('Post', post)
   }
 
-  onBlur(str: string) {
-    this.inputValue = str
+  removePost(id: number) {
+    console.log('Id to remove', id)
+    this.posts = this.posts.filter(p => p.id !== id)
   }
-
-  onClick() {
-    console.log('Click!')
-  }
-
 }
