@@ -13,15 +13,27 @@ export class AppComponent {
 
   obj = { a: 1, b: { c: 2 } }
 
-  img = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsm-dQHFmWp9Xw1e-4BfLDr67vBq5cil6OytRJExumqHUzTHVZ'
+  inputValue = ''
+
+  // img = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsm-dQHFmWp9Xw1e-4BfLDr67vBq5cil6OytRJExumqHUzTHVZ'
 
   constructor() {
-    setTimeout(() => {
-      console.log('Timeout is over')
-      this.img = 'https://angular.io/assets/images/logos/angular/angular.png'
-    }, 5000)
+    // setTimeout(() => {
+    //   console.log('Timeout is over')
+    //   this.img = 'https://angular.io/assets/images/logos/angular/angular.png'
+    // }, 5000)
   }
 
+  onInput(event: Event) {
+    this.inputValue = (<HTMLInputElement>event.target).value
+  }
 
+  onBlur(str: string) {
+    this.inputValue = str
+  }
+
+  onClick() {
+    console.log('Click!')
+  }
 
 }
