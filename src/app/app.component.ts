@@ -1,39 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { Observable } from 'rxjs'
+
+export interface Post {
+  title: string
+  text: string
+}
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  title = 'Dynamic title'
-  number = 42
-  arr = [1, 2, 3]
+  p: Promise<string> = new Promise<string>(resolve => {
+    setTimeout(() => {
+      resolve('Promise Resolved')
+    }, 4000)
+  })
 
-  obj = { a: 1, b: { c: 2 } }
+  date$: Observable<Date> = new Observable(obs => {
+    setInterval(() => {
+      obs.next(new Date())
+    }, 1000)
+  })
 
-  inputValue = ''
+  date!: Date
 
-  // img = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsm-dQHFmWp9Xw1e-4BfLDr67vBq5cil6OytRJExumqHUzTHVZ'
-
-  constructor() {
-    // setTimeout(() => {
-    //   console.log('Timeout is over')
-    //   this.img = 'https://angular.io/assets/images/logos/angular/angular.png'
-    // }, 5000)
-  }
-
-  onInput(event: Event) {
-    this.inputValue = (<HTMLInputElement>event.target).value
-  }
-
-  onBlur(str: string) {
-    this.inputValue = str
-  }
-
-  onClick() {
-    console.log('Click!')
+  ngOnInit(): void {
+    // this.date$.subscribe(date => {
+    //   this.date = date
+    // })
   }
 
 }
