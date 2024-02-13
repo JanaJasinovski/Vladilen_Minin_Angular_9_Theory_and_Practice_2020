@@ -1,25 +1,25 @@
-<h1>Hello Angular World!</h1>
+<div class="container">
+    <h1>Angular Services</h1>
 
-<!--<p>{{ title }}</p>-->
 
-<!--<p><strong>{{number - 2}}</strong></p>-->
-<!--<p><strong>{{arr}}</strong></p>-->
-<!--<p><strong>{{obj.b.c}}</strong></p>-->
+    <div class="card">
+        <h2>App Counter: {{appCounterService.counter}}</h2>
 
-<!--<p><strong>{{ 40 + 2 }}</strong></p>-->
-<!--<p><strong>{{ 'Hello' + ' World' }}</strong></p>-->
+        <button class="btn" (click)="appCounterService.increase()">+</button>
+        <button class="btn" (click)="appCounterService.decrease()">-</button>
 
-<!-- <img [src]="img" alt=""> -->
+    </div>
 
-<button (click)="onClick()">Click me!</button>
 
-<input type="text" (keyup.enter)="onInput($event)" (blur)="onBlur(myInput.value)" #myInput>
-<p><strong>{{inputValue}}</strong></p>
+    <div class="card">
+        <h2>Local Counter: {{localCounterService.counter}}</h2>
 
-<hr>
-<app-post></app-post>
-<!--<app-post></app-post>-->
+        <button class="btn" (click)="localCounterService.increase()">+</button>
+        <button class="btn" (click)="localCounterService.decrease()">-</button>
 
-<hr>
+    </div>
 
-<app-post4></app-post4>
+    <hr>
+
+    <app-counter></app-counter>
+</div>
