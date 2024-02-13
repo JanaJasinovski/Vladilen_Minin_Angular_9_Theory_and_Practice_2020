@@ -1,19 +1,15 @@
 import { Component } from '@angular/core'
-import { AppCounterService } from './services/app-counter.service'
-import { LocalCounterService } from './services/local-counter.service'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  providers: [LocalCounterService]
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  appState = 'off'
 
-  constructor(
-    public appCounterService: AppCounterService,
-    public localCounterService: LocalCounterService
-  ) { }
-
+  handleChange() {
+    console.log(this.appState)
+  }
 }
 
