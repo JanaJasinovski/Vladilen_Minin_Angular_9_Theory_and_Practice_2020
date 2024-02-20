@@ -1,16 +1,9 @@
 <nav class="navbar">
-    <h1>
-        <a [routerLink]="['/']">Angular Routing</a>
-    </h1>
-    <ul>
-        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            <a [routerLink]="['/']">Home</a>
-        </li>
-        <li routerLinkActive="active"><a routerLink="/posts">Posts</a></li>
-        <li routerLinkActive="active"><a [routerLink]="['/about']">About</a></li>
+    <h1>Angular Modules</h1>
 
-        <li><button class="btn" (click)="auth.login()">Login</button></li>
-        <li><button class="btn" (click)="auth.logout()">Logout</button></li>
+    <ul>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
+        <li routerLinkActive="active"><a routerLink="/about">About</a></li>
     </ul>
 </nav>
 
