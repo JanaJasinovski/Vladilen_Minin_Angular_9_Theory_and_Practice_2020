@@ -1,25 +1,23 @@
-<h1>Hello Angular World!</h1>
+<nav class="navbar">
+    <h1>
+        <a [routerLink]="['/']">Angular Routing</a>
+    </h1>
+    <ul>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a [routerLink]="['/']">Home</a>
+        </li>
+        <li routerLinkActive="active"><a routerLink="/posts">Posts</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['/about']">About</a></li>
 
-<!--<p>{{ title }}</p>-->
+        <li><button class="btn" (click)="auth.login()">Login</button></li>
+        <li><button class="btn" (click)="auth.logout()">Logout</button></li>
+    </ul>
+</nav>
 
-<!--<p><strong>{{number - 2}}</strong></p>-->
-<!--<p><strong>{{arr}}</strong></p>-->
-<!--<p><strong>{{obj.b.c}}</strong></p>-->
+<div class="container">
+    <div class="card">
 
-<!--<p><strong>{{ 40 + 2 }}</strong></p>-->
-<!--<p><strong>{{ 'Hello' + ' World' }}</strong></p>-->
+        <router-outlet></router-outlet>
 
-<!-- <img [src]="img" alt=""> -->
-
-<button (click)="onClick()">Click me!</button>
-
-<input type="text" (keyup.enter)="onInput($event)" (blur)="onBlur(myInput.value)" #myInput>
-<p><strong>{{inputValue}}</strong></p>
-
-<hr>
-<app-post></app-post>
-<!--<app-post></app-post>-->
-
-<hr>
-
-<app-post4></app-post4>
+    </div>
+</div>
