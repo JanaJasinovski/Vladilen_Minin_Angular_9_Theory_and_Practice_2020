@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {PostsService} from './posts.service';
+import { Component, OnInit } from '@angular/core';
+import { PostsService } from './posts.service';
 
 @Component({
   template: `Posts component`,
@@ -7,13 +7,14 @@ import {PostsService} from './posts.service';
 })
 export class PostsComponent implements OnInit {
   posts = []
-  message: string
+  message!: string
 
   constructor(private service: PostsService) {
   }
 
   ngOnInit(): void {
-    this.service.fetch().subscribe(p => {
+    this.service.fetchPromise().then(p => {
+      console.log('fetchPromise CALLED')
       this.posts = p
     })
   }
@@ -25,7 +26,7 @@ export class PostsComponent implements OnInit {
     }, err => this.message = err)
   }
 
-  delete(id) {
+  delete(id: number) {
     if (window.confirm('Are you sure?')) {
       this.service.remove(id).subscribe()
     }
