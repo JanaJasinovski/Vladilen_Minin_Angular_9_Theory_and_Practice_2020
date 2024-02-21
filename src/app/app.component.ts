@@ -1,39 +1,25 @@
 import { Component } from '@angular/core';
+import { boxAnimation } from "./app.animations";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.css'],
+  animations: [boxAnimation]
 })
 export class AppComponent {
+  boxState = 'start'
+  visible = true
 
-  title = 'Dynamic title'
-  number = 42
-  arr = [1, 2, 3]
-
-  obj = { a: 1, b: { c: 2 } }
-
-  inputValue = ''
-
-  // img = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsm-dQHFmWp9Xw1e-4BfLDr67vBq5cil6OytRJExumqHUzTHVZ'
-
-  constructor() {
-    // setTimeout(() => {
-    //   console.log('Timeout is over')
-    //   this.img = 'https://angular.io/assets/images/logos/angular/angular.png'
-    // }, 5000)
+  animate() {
+    this.boxState = this.boxState === 'end' ? 'start' : 'end'
   }
 
-  onInput(event: Event) {
-    this.inputValue = (<HTMLInputElement>event.target).value
+  animationStarted(event: AnimationEvent) {
+    console.log('animationStarted', event)
   }
 
-  onBlur(str: string) {
-    this.inputValue = str
+  animationDone(event: AnimationEvent) {
+    console.log('animationDone', event)
   }
-
-  onClick() {
-    console.log('Click!')
-  }
-
 }

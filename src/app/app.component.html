@@ -1,25 +1,24 @@
-<h1>Hello Angular World!</h1>
+<button (click)="animate()">Animate</button>
+<button (click)="boxState = 'special'">Set Special State</button>
+<button (click)="visible = !visible">Toggle Visibility</button>
 
-<!--<p>{{ title }}</p>-->
+<hr />
 
-<!--<p><strong>{{number - 2}}</strong></p>-->
-<!--<p><strong>{{arr}}</strong></p>-->
-<!--<p><strong>{{obj.b.c}}</strong></p>-->
+<div class="wrap">
 
-<!--<p><strong>{{ 40 + 2 }}</strong></p>-->
-<!--<p><strong>{{ 'Hello' + ' World' }}</strong></p>-->
+    <app-animate></app-animate>
 
-<!-- <img [src]="img" alt=""> -->
 
-<button (click)="onClick()">Click me!</button>
+    <!--  <div-->
+    <!--    class="box"-->
+    <!--    *ngIf="visible"-->
+    <!--    [@box]="boxState"-->
+    <!--    (@box.start)="animationStarted($event)"-->
+    <!--    (@box.done)="animationDone($event)"-->
+    <!--  >-->
+    <!--    <h4>{{ boxState | uppercase }}</h4>-->
+    <!--  </div>-->
 
-<input type="text" (keyup.enter)="onInput($event)" (blur)="onBlur(myInput.value)" #myInput>
-<p><strong>{{inputValue}}</strong></p>
 
-<hr>
-<app-post></app-post>
-<!--<app-post></app-post>-->
 
-<hr>
-
-<app-post4></app-post4>
+</div>
