@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core';
+import { boxAnimation } from "./app.animations";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.css'],
+  animations: [boxAnimation]
 })
-export class AppComponent implements OnInit {
-  ngOnInit(): void {
-    throw new Error('Method not implemented.')
+export class AppComponent {
+  boxState = 'start'
+  visible = true
+
+  animate() {
+    this.boxState = this.boxState === 'end' ? 'start' : 'end'
   }
-  public title = 'angular-unit-tests';
 
+  animationStarted(event: AnimationEvent) {
+    console.log('animationStarted', event)
+  }
+
+  animationDone(event: AnimationEvent) {
+    console.log('animationDone', event)
+  }
 }
-
